@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quote Generator</title>
+  <title>Demo App: Quote Generator for Chulo Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -15,86 +15,91 @@
 
   <div class=" mx-auto p-4 max-w-xl flex-col">
 
-    <h1 class="text-2xl font-bold text-center mb-6">Quote Generator</h1>
+    <h1 class="text-2xl font-bold text-center mb-6">Demo App: Quote Generator for Chulo Solutions</h1>
 
     <div class="bg-white p-6 shadow-md rounded-lg dark:bg-gray-800 min-h-40">
       <blockquote id="quote" class="text-lg font-semibold mb-4">"Quote to be shown here"</blockquote>
       <cite id="author" class="block text-right">- who said it</cite>
     </div>
 
+    <div class="mt-4 flex justify-between">
+      <button id="prev" class="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-900  "> &lt- Previous</button>
+      <button id="next" class="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-900 ">Next -&gt</button>
+    </div>
+    <div class="mt-4 flex justify-between items-center">
+      
+      <button id="increase-font" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none font-bold ">+</button>
+      <span class="text-md font-medium">Adjust Font Size</span>
+        <button id="decrease-font" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none font-bold">-</button>
+      
+    </div>
+
     <div class="mt-4">
-      <label for="category" class="block text-sm font-medium mb-2">Quote Category</label>
+      <label for="category" class="block text-sm font-medium mb-2">Select Category</label>
       <select id="category" class="w-full bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600  dark:bg-gray-700">
         <option value="all" class="">All Categories</option>
-        <option value="science">Science</option>
-        <option value="philosophy">Philosophy</option>
+        <option value="programming">Programming Quotes</option>
+        <option value="movies">Movies Quotes</option>
       </select>
     </div>
 
-    <div class="mt-4 flex justify-between">
-      <button id="prev" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-900  ">Previous</button>
-      <button id="next" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-900 ">Next</button>
-    </div>
+   
 
  
     <div class="mt-4">
-      <button id="random" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-900 ">Random</button>
+      <button id="random" class="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-900 ">Show Random Quote</button>
     </div>
 
   
-    <div class="mt-4 flex justify-between items-center">
-      <span class="text-sm font-medium">Adjust Font Size:</span>
-      <div class="flex justify-around gap-2">
-        <button id="increase-font" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none font-bold ">+</button>
-        <button id="decrease-font" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none font-bold">-</button>
-      </div>
-    </div>
 
     <div class="mt-4 flex items-center justify-between">
       <label for="mode-toggle" class="text-sm font-medium">Dark Mode:</label>
-      <input type="checkbox" id="mode-toggle" class="h-6 w-6 text-indigo-600 focus:ring-indigo-500 rounded-full" />
+      <input type="checkbox"  id="mode-toggle"  class="h-6 w-6 text-indigo-600 focus:ring-indigo-500 rounded-full" />
     </div>
+    <p class="fixed bottom-1 right-1 italic">Submitted By: Gaurab Paudyal</p>
   </div>
+
+
   <script>
-    // Quotes Data (for demonstration purposes)
     const quotes = {
-      all: [
-        { text: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
-        { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-        { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
-        { text: "The best way to predict your future is to create it.", author: "Peter Drucker" },
-        { text: "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.", author: "Buddha" },
-        { text: "The purpose of our lives is to be happy.", author: "Dalai Lama" },
-        { text: "The best revenge is massive success.", author: "Frank Sinatra" },
-        { text: "Life is what happens when you're busy making other plans.", author: "John Lennon" },
-        { text: "If life were predictable it would cease to be life, and be without flavor.", author: "Eleanor Roosevelt" },
-        { text: "In the end, it's not the years in your life that count. It's the life in your years.", author: "Abraham Lincoln" }
-      ],
-      science: [
-        { text: "Science is a way of thinking much more than it is a body of knowledge.", author: "Carl Sagan" },
-        { text: "The important thing is not to stop questioning.", author: "Albert Einstein" },
-        { text: "Somewhere, something incredible is waiting to be known.", author: "Carl Sagan" },
-        { text: "Equipped with his five senses, man explores the universe around him and calls the adventure Science.", author: "Edwin Hubble" },
-        { text: "The good thing about science is that it's true whether or not you believe in it.", author: "Neil deGrasse Tyson" },
-        { text: "Science and everyday life cannot and should not be separated.", author: "Rosalind Franklin" },
-        { text: "We cannot solve our problems with the same thinking we used when we created them.", author: "Albert Einstein" },
-        { text: "The scientist is not a person who gives the right answers, he’s one who asks the right questions.", author: "Claude Lévi-Strauss" },
-        { text: "The great tragedy of science — the slaying of a beautiful hypothesis by an ugly fact.", author: "Thomas Huxley" },
-        { text: "The important thing is to never stop questioning. Curiosity has its own reason for existence.", author: "Albert Einstein" }
-      ],
-      philosophy: [
-        { text: "The unexamined life is not worth living.", author: "Socrates" },
-        { text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", author: "Aristotle" },
-        { text: "Happiness is the highest good.", author: "Aristotle" },
-        { text: "He who thinks great thoughts, often makes great errors.", author: "Martin Heidegger" },
-        { text: "The only true wisdom is in knowing you know nothing.", author: "Socrates" },
-        { text: "Man is the measure of all things.", author: "Protagoras" },
-        { text: "The mind is everything. What you think you become.", author: "Buddha" },
-        { text: "He who has a why to live can bear almost any how.", author: "Friedrich Nietzsche" },
-        { text: "Act only according to that maxim whereby you can at the same time will that it should become a universal law.", author: "Immanuel Kant" },
-        { text: "To be is to be perceived.", author: "George Berkeley" }
-      ]
-    };
+  all: [
+    { text: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
+    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+    { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+    { text: "The best way to predict your future is to create it.", author: "Peter Drucker" },
+    { text: "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.", author: "Buddha" },
+    { text: "The purpose of our lives is to be happy.", author: "Dalai Lama" },
+    { text: "The best revenge is massive success.", author: "Frank Sinatra" },
+    { text: "Life is what happens when you're busy making other plans.", author: "John Lennon" },
+    { text: "If life were predictable it would cease to be life, and be without flavor.", author: "Eleanor Roosevelt" },
+    { text: "In the end, it's not the years in your life that count. It's the life in your years.", author: "Abraham Lincoln" }
+  ],
+  programming: [
+    { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+    { text: "Programs must be written for people to read, and only incidentally for machines to execute.", author: "Harold Abelson" },
+    { text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
+    { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
+    { text: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
+    { text: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" },
+    { text: "The function of good software is to make the complex appear to be simple.", author: "Grady Booch" },
+    { text: "Java is to JavaScript what car is to carpet.", author: "Chris Heilmann" },
+    { text: "Truth can only be found in one place: the code.", author: "Robert C. Martin" },
+    { text: "Fix the cause, not the symptom.", author: "Steve Maguire" }
+  ],
+  movies: [
+    { text: "May the Force be with you.", author: "Star Wars" },
+    { text: "I'm going to make him an offer he can't refuse.", author: "The Godfather" },
+    { text: "Here's looking at you, kid.", author: "Casablanca" },
+    { text: "You can't handle the truth!", author: "A Few Good Men" },
+    { text: "I'll be back.", author: "The Terminator" },
+    { text: "Keep your friends close, but your enemies closer.", author: "The Godfather Part II" },
+    { text: "I feel the need—the need for speed!", author: "Top Gun" },
+    { text: "Carpe diem. Seize the day, boys. Make your lives extraordinary.", author: "Dead Poets Society" },
+    { text: "Why so serious?", author: "The Dark Knight" },
+    { text: "To infinity and beyond!", author: "Toy Story" }
+  ]
+};
+
 
     let selectedCategory = 'all';
     let selectedIndex = 0;
