@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Quote Generator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1 class="text-3xl font-bold underline ">
-        Hello world!
-      </h1>
+<body class="bg-gray-100 text-gray-900">
+
+  <div class=" mx-auto p-4 max-w-xl flex-col">
+
+    <h1 class="text-2xl font-bold text-center mb-6">Quote Generator</h1>
+
+    <div class="bg-white p-6 shadow-md rounded-lg">
+      <blockquote id="quote" class="text-lg font-semibold mb-4">"Quote to be shown here"</blockquote>
+      <cite id="author" class="block text-right">- who said it</cite>
+    </div>
+
+    <div class="mt-4">
+      <label for="category" class="block text-sm font-medium mb-2">Quote Category</label>
+      <select id="category" class="w-full bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 ">
+        <option value="all" class="">All Categories</option>
+        <option value="science">Science</option>
+        <option value="philosophy">Philosophy</option>
+      </select>
+    </div>
+
+    <div class="mt-4 flex justify-between">
+      <button id="prev" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-900  ">Previous</button>
+      <button id="next" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-900 ">Next</button>
+    </div>
+
+ 
+    <div class="mt-4">
+      <button id="random" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-900 ">Random</button>
+    </div>
+
+  
+    <div class="mt-4 flex justify-between items-center">
+      <span class="text-sm font-medium">Adjust Font Size:</span>
+      <div class="flex justify-around gap-2">
+        <button id="increase-font" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none font-bold ">+</button>
+        <button id="decrease-font" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none font-bold">-</button>
+      </div>
+    </div>
+
+    <div class="mt-4 flex items-center justify-between">
+      <label for="mode-toggle" class="text-sm font-medium">Dark Mode:</label>
+      <input type="checkbox" id="mode-toggle" class="h-6 w-6 text-indigo-600 focus:ring-indigo-500 rounded-full" />
+    </div>
+  </div>
+  
 </body>
 </html>
