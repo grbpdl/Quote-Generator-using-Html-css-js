@@ -6,20 +6,20 @@
   <title>Quote Generator</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white ">
 
   <div class=" mx-auto p-4 max-w-xl flex-col">
 
     <h1 class="text-2xl font-bold text-center mb-6">Quote Generator</h1>
 
-    <div class="bg-white p-6 shadow-md rounded-lg">
+    <div class="bg-white p-6 shadow-md rounded-lg dark:bg-gray-800">
       <blockquote id="quote" class="text-lg font-semibold mb-4">"Quote to be shown here"</blockquote>
       <cite id="author" class="block text-right">- who said it</cite>
     </div>
 
     <div class="mt-4">
       <label for="category" class="block text-sm font-medium mb-2">Quote Category</label>
-      <select id="category" class="w-full bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 ">
+      <select id="category" class="w-full bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600  dark:bg-gray-700">
         <option value="all" class="">All Categories</option>
         <option value="science">Science</option>
         <option value="philosophy">Philosophy</option>
