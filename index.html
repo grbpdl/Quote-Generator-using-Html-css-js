@@ -51,6 +51,7 @@
     </div>
   </div>
   <script>
+    // Quotes Data (for demonstration purposes)
     const quotes = {
       all: [
         { text: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
@@ -90,6 +91,72 @@
       ]
     };
 
+    let selectedCategory = 'all';
+    let selectedIndex = 0;
+
+    const quoteElement = document.getElementById('quote');
+    const authorElement = document.getElementById('author');
+    const categorySelector = document.getElementById('category');
+    const darkmodeCheckbox = document.getElementById('mode-toggle');
+    const body = document.body;
+
+
+    function displayQuote(index) {
+      const categoryQuotes = quotes[selectedCategory];
+      const { text, author } = categoryQuotes[index];
+      quoteElement.textContent = `"${text}"`;
+      authorElement.textContent = `- ${author}`;
+    }
+
+  
+    document.getElementById('next').addEventListener('click', () => {
+      const categoryQuotes = quotes[selectedCategory];
+      selectedIndex = (selectedIndex + 1) % categoryQuotes.length;
+      displayQuote(selectedIndex);
+    });
+
+  
+    document.getElementById('prev').addEventListener('click', () => {
+      const categoryQuotes = quotes[selectedCategory];
+      selectedIndex = (selectedIndex - 1 + categoryQuotes.length) % categoryQuotes.length;
+      displayQuote(selectedIndex);
+    });
+
+    document.getElementById('random').addEventListener('click', () => {
+      const categoryQuotes = quotes[selectedCategory];
+      selectedIndex = Math.floor(Math.random() * categoryQuotes.length);
+      displayQuote(selectedIndex);
+    });
+
+    categorySelector.addEventListener('change', (e) => {
+      selectedCategory = e.target.value;
+      selectedIndex = 0;
+      displayQuote(selectedIndex);
+    });
+
+    let fontSize = 1.2;
+
+document.getElementById('increase-font').addEventListener('click', () => {
+  fontSize = Math.min(2, fontSize + 0.1); 
+  quoteElement.style.fontSize = `${fontSize}rem`; 
+});
+
+document.getElementById('decrease-font').addEventListener('click', () => {
+  fontSize = Math.max(0.8, fontSize - 0.1); 
+  quoteElement.style.fontSize = `${fontSize}rem`; 
+});
+
+  
+    darkmodeCheckbox.addEventListener('change', () => {
+      if (darkmodeCheckbox.checked) {
+        body.classList.add('dark');
+      } else {
+        body.classList.remove('dark');
+      }
+    });
+
+
+    displayQuote(selectedIndex);
   </script>
 </body>
 </html>
