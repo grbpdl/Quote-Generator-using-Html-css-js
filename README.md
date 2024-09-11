@@ -1,5 +1,6 @@
 
 #  Quote Generator
+Site Deployed on Netlify as: https://main--super-beignet-2c5bde.netlify.app/
 
 Your task is to create a simple quote generator app using only HTML, CSS and JavaScript. The app should fulfill the following requirements:
 
